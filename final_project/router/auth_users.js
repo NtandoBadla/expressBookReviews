@@ -7,21 +7,32 @@ let users = [];
 
 const isValid = (username)=>{ //returns boolean
 //write code to check is the username is valid
+  return users.find(user => user.username === username) === undefined;
 }
 
 const authenticatedUser = (username,password)=>{ //returns boolean
 //write code to check if username and password match the one we have in records.
+  return users.some(
+    user =>
+        user.username === username &&
+        user.password === password
+);
 }
 
 //only registered users can login
 regd_users.post("/login", (req,res) => {
   //Write your code here
+  {
+    username,
+    password
+}
   return res.status(300).json({message: "Yet to be implemented"});
 });
 
 // Add a book review
 regd_users.put("/auth/review/:isbn", (req, res) => {
   //Write your code here
+  const isbn = req.params.isbn;
   return res.status(300).json({message: "Yet to be implemented"});
 });
 
